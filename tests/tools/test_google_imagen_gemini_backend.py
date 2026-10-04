@@ -1,6 +1,6 @@
 """Tests for the Gemini image backend in google_imagen.
 
-Models named `gemini-*` (e.g. gemini-2.5-flash-image) are not served by the
+Models named `gemini-*` (e.g. gemini-3.1-flash-image-preview) are not served by the
 Imagen `:predict` endpoint — they generate images through generate_content
 with an image_config. This backend matters on Vertex projects that have no
 Imagen catalog access, where it is the only working Google image path.
@@ -73,18 +73,18 @@ def test_gemini_model_routes_to_generate_content(imagen_tool, tmp_path):
     result = tool.execute(
         {
             "prompt": "a flower",
-            "model": "gemini-2.5-flash-image",
+            "model": "gemini-3.1-flash-image-preview",
             "aspect_ratio": "16:9",
             "output_path": str(out),
         }
     )
 
     assert result.success
-    assert result.data["model"] == "gemini-2.5-flash-image"
+    assert result.data["model"] == "gemini-3.1-flash-image-preview"
     assert out.read_bytes() == b"GEMINI_IMG"
 
     assert len(calls) == 1
-    assert calls[0]["model"] == "gemini-2.5-flash-image"
+    assert calls[0]["model"] == "gemini-3.1-flash-image-preview"
     # Aspect ratio must reach the API through image_config, not be dropped.
     assert calls[0]["config"].image_config.aspect_ratio == "16:9"
 
@@ -103,15 +103,15 @@ def test_image_selector_maps_model_name_to_google_model(
         {
             "prompt": "a flower",
             "preferred_provider": "google_imagen",
-            "model_name": "gemini-2.5-flash-image",
+            "model_name": "gemini-3.1-flash-image-preview",
             "output_path": str(tmp_path / "selected.png"),
         }
     )
 
     assert result.success, result.error
-    assert calls[0]["model"] == "gemini-2.5-flash-image"
+    assert calls[0]["model"] == "gemini-3.1-flash-image-preview"
     assert result.data["selected_tool"] == "google_imagen"
-    assert result.data["model"] == "gemini-2.5-flash-image"
+    assert result.data["model"] == "gemini-3.1-flash-image-preview"
 
 
 def test_gemini_cost_estimate_is_per_image():
@@ -119,7 +119,7 @@ def test_gemini_cost_estimate_is_per_image():
 
     tool = GoogleImagen()
     assert tool.estimate_cost(
-        {"model": "gemini-2.5-flash-image", "number_of_images": 2}
+        {"model": "gemini-3.1-flash-image-preview", "number_of_images": 2}
     ) == pytest.approx(0.039 * 2)
 
 
@@ -147,7 +147,7 @@ def test_text_only_response_is_a_clear_error(monkeypatch, tmp_path):
     result = GoogleImagen().execute(
         {
             "prompt": "a flower",
-            "model": "gemini-2.5-flash-image",
+            "model": "gemini-3.1-flash-image-preview",
             "output_path": str(tmp_path / "img.png"),
         }
     )

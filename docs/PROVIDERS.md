@@ -803,13 +803,13 @@ The free tiers apply *independently* — you get 1M Standard AND 1M WaveNet AND 
 | Imagen 4 Fast | $0.02 |
 | Imagen 4 Standard | $0.04 |
 | Imagen 4 Ultra | $0.06 |
-| Gemini 2.5 Flash Image (`gemini-2.5-flash-image`) | $0.039 |
+| Gemini 3.1 Flash Image (`gemini-3.1-flash-image-preview`) | $0.039 |
 
 **Free tier for Imagen:** None. Paid tier only.
 
 To select the Gemini backend through the governed `image_selector`, pass
 `preferred_provider: "google_imagen"` and
-`model_name: "gemini-2.5-flash-image"`. The selector maps its neutral
+`model_name: "gemini-3.1-flash-image-preview"`. The selector maps its neutral
 `model_name` field to the provider's `model` input.
 
 #### Gemini Omni Video Pricing

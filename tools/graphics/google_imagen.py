@@ -119,12 +119,12 @@ class GoogleImagen(BaseTool):
                     "imagen-4.0-generate-001",
                     "imagen-4.0-fast-generate-001",
                     "imagen-4.0-ultra-generate-001",
-                    "gemini-2.5-flash-image",
+                    "gemini-3.1-flash-image-preview",
                 ],
                 "default": "imagen-4.0-generate-001",
                 "description": "Imagen model variant, or a Gemini image model "
                 "(gemini-*) routed through generate_content. Use "
-                "gemini-2.5-flash-image when the project has no Imagen access.",
+                "gemini-3.1-flash-image-preview when the project has no Imagen access.",
             },
             "number_of_images": {
                 "type": "integer",
@@ -207,7 +207,7 @@ class GoogleImagen(BaseTool):
         return "1:1"
 
     def _execute_gemini(self, inputs: dict[str, Any], model: str) -> ToolResult:
-        """Generate via a Gemini image model (e.g. gemini-2.5-flash-image).
+        """Generate via a Gemini image model (e.g. gemini-3.1-flash-image-preview).
 
         These models use generate_content with an image_config instead of the
         Imagen :predict endpoint, and work on both auth paths (API key and
