@@ -51,13 +51,25 @@ word_timestamps: [
 
 ### Language Detection
 
-- Pass `language: null` to auto-detect (adds ~1s overhead).
-- Pass an explicit ISO 639-1 code (`en`, `es`, `ja`, etc.) when you know the language.
+- Pass `language: null` to auto-detect only on clean studio audio.
+- **Always pass an explicit ISO 639-1 code (`language="en"`, `es`, `ja`, etc.) on outdoor/street presenter footage:** Broadband traffic or crowd noise in the opening seconds frequently causes Whisper's language detector to misclassify English speech as Malay/Indonesian (`ms`/`id`) or another language, corrupting the entire transcript.
+
+### PyAV `metadata_errors` Compatibility Workaround
+
+When calling `faster_whisper` directly in Python on environments with newer PyAV builds where `av.open(..., metadata_errors="ignore")` raises `TypeError: open() got an unexpected keyword argument 'metadata_errors'`, decode the audio stream to raw `16kHz` mono PCM via `ffmpeg` and pass the `np.float32` array directly to `model.transcribe()`:
+
+```python
+raw = subprocess.check_output(
+    ["ffmpeg", "-v", "error", "-i", src_path, "-vn", "-ac", "1", "-ar", "16000", "-f", "s16le", "-"]
+)
+audio = np.frombuffer(raw, dtype=np.int16).astype(np.float32) / 32768.0
+segments, info = model.transcribe(audio, language="en", word_timestamps=True)
+```
 
 ## Quality Checklist
 
 - [ ] Transcript text is accurate (spot-check 3-5 segments)
-- [ ] Word timestamps align with actual speech when played back
+- [ ] Word timestamps align with actual speech when played back (verify cut points against 10ms–50ms RMS envelope before trimming)
 - [ ] No missing segments or large gaps in the transcript
-- [ ] Language was correctly detected (if auto)
+- [ ] Explicit `language` code passed for outdoor/noisy recordings
 - [ ] Speaker labels are correct (if diarization was used)

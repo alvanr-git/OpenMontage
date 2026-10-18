@@ -160,6 +160,10 @@ Recurring mechanics that bite if you don't know them:
   verbatim, do NOT also emit an auto-caption with the same text — the doubled phrase looks
   amateurish even when the rest of the scene is beautiful. Empty `captions=[]` in props, or
   scope captions only to scenes where the on-screen text differs from what's being said.
+- **9:16 Social Reel Active Captions & Kinetic Plates (Remotion Atelier)**:
+  - **Safe-zone box (`x = 135..935`, `y = 175..1380`)**: Keep the bottom `540px` (`y > 1380`) clear of Reels/TikTok/Shorts profile & caption overlays, `left >= 135px` clear of aspect-ratio edge crops, and `right >= 145px` (`x <= 935`) clear of the right-hand Like/Comment/Share icon column. Verify pre-rendered PNG plates with `PIL.Image.getbbox()`.
+  - **Progressive word pop-in without grey pre-text**: In word-synced active caption components (`ActiveCaptionBlock`), keep unspoken future words at `opacity: 0` inside their flex layout slots (so spoken words never shift horizontally as new words appear) and animate `opacity: 0 -> 1`, spring `scale(0.86 -> 1.14 -> 1.0)`, `translateY(8px -> -6px -> 0)`, and active underline `scaleX` at `curSec >= word.start`. Never pre-display unspoken words in grey/dimmed text.
+  - **90/10 color restraint & contoured strokes**: Use `WebkitTextStroke: "6px #0E0E12"` with `paintOrder: "stroke fill"` and multi-layer dark halo `textShadow` (zero opaque pill/box backgrounds), keeping ~90% of words in crisp white/ivory and reserving ~10% single-hue accent color strictly for focal numbers and active keywords. Cap kinetic entrance `slam` overshoot at `1.14x` so wide hero plates never breach horizontal safe zones during entrance frames.
 
 ### 5. Render through the runtime-appropriate bespoke path
 Bespoke compositions are **throwaway and project-local** — they never enter any shared registry.

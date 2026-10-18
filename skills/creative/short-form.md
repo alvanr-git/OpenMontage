@@ -27,9 +27,11 @@ MUSIC:            120-140 BPM for energetic, 90-110 for explainers
 | YouTube Shorts | 984x1500 | 120px | 300px | 96px |
 | Facebook Reels | 1080x1520 | 100px | 300px | 60px |
 
-**Universal safe zone: 900x1400px centered** — works across all platforms.
+**Universal safe zone: `x = 135..935`, `y = 175..1380` (`800x1205px` inner box)** — works across all vertical platforms without edge clipping or UI overlap.
 
-**Bottom dead zones are critical** — platform UI (comments, share buttons, captions) covers the bottom 300-320px. Never put important content there.
+**Bottom and right-side dead zones are critical**:
+- **Bottom `540px` (`y = 1380..1920`)**: Covered by creator profile name, caption copy, audio ticker, and bottom bar.
+- **Left `135px` (`x < 135`) & Right `145px` (`x > 935`)**: Covered by phone aspect-ratio edge cropping and the right-side Like/Comment/Share/Save icon stack. Never place captions or callout graphics outside `x = 135..935`, `y = 175..1380`.
 
 ## Upload Specs
 
@@ -47,7 +49,7 @@ MAX SIZE:    500 MB (desktop), 287.6 MB (iOS), 72 MB (Android)
 | 0-15s | 92% | Single fact, quick tip, visual gag |
 | 16-30s | 84% | One concept explained, before/after |
 | 31-60s | 68% | Mini tutorial, step-by-step, story arc |
-| 60s+ | 48% | Deep explainer, only if retention structure is strong |
+| 60-90s | 48%+ | Presenter walkthroughs, property tours, multi-scene stories |
 
 **Platform sweet spots:**
 - TikTok: 21-34 seconds for completion; 60-180s for maximum total watch time
@@ -55,6 +57,7 @@ MAX SIZE:    500 MB (desktop), 287.6 MB (iOS), 72 MB (Android)
 - Shorts: Bimodal — ~13 seconds OR full 60 seconds (Shortimize 35B views analysis)
 
 **Key formula:** A 45s video with 70% completion (31.5s watch time) outperforms a 15s video with 40% completion (6s). Total watch time is what the algorithm rewards.
+**Never truncate spoken sentences to hit an arbitrary 30s ceiling:** On presenter-led or walkthrough footage, cutting mid-thought or rushing natural speech ruins credibility. Let complete spoken clauses and natural acoustic silence boundaries determine the runtime (e.g., 60–85s).
 
 ## The 1-Second Hook
 
@@ -125,21 +128,21 @@ MAX SIZE:    500 MB (desktop), 287.6 MB (iOS), 72 MB (Android)
 
 | Parameter | Value |
 |-----------|-------|
-| Font size | 42px+ at 1080p |
-| Font weight | Bold |
+| Font size | 34-42px+ at 1080p |
+| Font weight | Bold / ExtraBold (800-900) |
 | Font family | Sans-serif (Inter, Montserrat, Poppins) |
-| Background | Semi-transparent black (75% opacity) or text stroke (3px) |
-| Position | Center or lower-center, within safe zone |
+| Background | Contoured dark stroke (`4-6px #0E0E12`) + multi-layer dark halo shadow (avoid opaque boxes on presenter reels) |
+| Position | Strictly inside `x = 135..935`, `y = 175..1380` (clear of bottom `540px` and right `145px` social UI) |
 | Max chars/line | 30 |
 | Max lines | 2 |
-| Word-by-word highlight | Recommended for engagement |
+| Word-by-word highlight | Progressive pop-in (`opacity: 0` until spoken — never show grey unspoken words ahead of speech), active word scale pop (`1.14x`) + underline sweep, and 90/10 color restraint |
 
 ### On-Screen Text (Non-Caption)
 
-- Position in the **top 40%** of the safe zone (above center)
-- Bold, high contrast (white on dark or colored background box)
+- Position in the **upper safe zone (`y = 175..450`)** during B-roll or **lower-mid safe zone (`y = 1000..1350`)** when captions sit above/below
+- Follow the **90/10 color restraint rule**: ~90% crisp white/ivory, ~10% single-hue surgical accent on focal numbers/keywords
 - 3-5 words maximum per text block
-- Animate entrance (scale pop or fade, 0.2-0.3s)
+- Animate entrance (`slam`, `swing`, `rise`, or handwriting `wipe`, keeping entrance scale overshoot `<= 1.14x` so left/right safe zones are never breached)
 
 ## Audio
 

@@ -35,10 +35,18 @@ where to cut, what to remove, how to pace, and how to structure the final edit.
 - **J-cut:** Audio from the next segment starts ~0.5s before the visual cut. Makes transitions feel smooth.
 - **L-cut:** Audio from the current segment continues ~0.5s after the visual cut. Maintains continuity.
 - **Hard cut:** Instant transition. Use at major topic changes.
+- **B-roll visual bridge over mid-take removals:** When excising a sentence from the middle of a continuous on-camera walk-and-talk clip (e.g., cutting `9.60s..14.55s`), switch the video track to 4K B-roll right at the audio splice point (`9.60s`) so the cut is 100% invisible (zero facial jump-cut).
+
+### Sample-Accurate Speech Trimming (RMS Silence Verification)
+
+1. **Never rely on coarse Whisper word-end timestamps alone:** Whisper word boundaries can lead or lag trailing consonants (`s`, `t`, `d`, `k`) by `80–250ms`. Cutting directly on a raw Whisper timestamp frequently clips the final syllable.
+2. **Inspect the 10ms–50ms RMS dB envelope around every cut point:** Locate the true acoustic silence valley (`-35 dB` to `-50 dB`) between phrases before setting `trim` / `atrim` timestamps, and apply `40–100ms` audio micro-fades (`afade=t=in:st=0:d=0.04`, `afade=t=out:st=...:d=0.08`) with dynamic normalization (`highpass=f=80,acompressor,alimiter`) so transitions never click or clip.
+3. **Never force an arbitrary 30s ceiling that truncates sentences:** Let complete spoken thoughts dictate scene length.
+4. **Live source-media re-inventory:** Whenever a user deletes unwanted source clips from their media folder or requests timeline re-sequencing, re-scan the directory first and verify zero deleted filenames remain referenced in any asset preparation script or manifest.
 
 ### Pacing
 
-- **Short-form (< 60s):** Aggressive cuts. Minimal dead air. High energy.
+- **Short-form (< 90s):** High energy, visual change every 2–4s via B-roll cutaways and kinetic callouts, while preserving 100% of spoken syllables at natural phrase boundaries.
 - **Medium-form (1-10 min):** Balanced. Keep natural pauses for breathing room.
 - **Long-form (> 10 min):** Let scenes breathe. Only cut obvious problems.
 
@@ -54,8 +62,9 @@ The `edit_decisions` artifact should include:
 
 ## Quality Checklist
 
-- [ ] No visible jump cuts (smooth transitions between segments)
-- [ ] Audio doesn't pop or click at cut points
-- [ ] Pacing matches the content energy and target platform
-- [ ] Speaker's face is never covered by overlays
-- [ ] All cuts are at word boundaries (not mid-word)
+- [ ] No visible jump cuts (mid-take audio removals covered by B-roll visual bridges)
+- [ ] Audio doesn't pop, click, or clip trailing consonants at cut points (verified via 10ms–50ms RMS envelope)
+- [ ] Pacing matches the content energy and target platform without truncating sentences
+- [ ] Speaker's face is never covered by overlays, and all text stays inside platform safe zones
+- [ ] All cuts land inside verified acoustic silence valleys between words
+- [ ] Zero deleted or excluded source clips are referenced in the build

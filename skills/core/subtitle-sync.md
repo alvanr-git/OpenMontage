@@ -54,8 +54,10 @@ primary_color: &H00FFFFFF      # white (ASS format: alpha=00, BGR=FFFFFF)
 outline_color: &H00000000      # black
 outline_width: 3               # thick outline for readability on varied backgrounds
 shadow: 2
-margin_v: 50                   # pixels from bottom edge
-alignment: 2                   # bottom center
+margin_v: 540                  # keep >= 540px from bottom edge (y <= 1380) to clear Reels/TikTok/Shorts profile & caption UI
+margin_l: 135                  # >= 135px from left edge to clear phone aspect-ratio edge cropping
+margin_r: 145                  # >= 145px from right edge (x <= 935) to clear right-side Like/Comment/Share buttons
+alignment: 2                   # bottom center (within safe zone)
 ```
 
 ### Horizontal Video (1920x1080)
@@ -77,7 +79,7 @@ alignment: 2
 - **Wrong color format:** `&HFFFFFF` breaks positioning. Always use full 8-char `&H00FFFFFF`.
 - **Font too large on vertical:** `font_size: 28` fills the center of a 9:16 frame. Use 18 max.
 - **Too many words per cue on vertical:** 5+ words creates multi-line blocks that cover the face.
-- **MarginV too large:** Values over 200 push text off-screen. Stay under 100 for most cases.
+- **Placing 9:16 captions near the bottom (`margin_v < 500`) or right edge (`margin_r < 140`):** On TikTok, Instagram Reels, and YouTube Shorts, the bottom `540px` (`y = 1380..1920`) is occluded by creator profile names, caption descriptions, and audio tickers, and the right `145px` (`x = 935..1080`) is covered by the Like/Comment/Share/Save icon stack. Always keep vertical captions within `x = 135..935` and `y = 175..1380`.
 
 ## Timing Best Practices
 
@@ -97,7 +99,7 @@ to segment-level timing with even distribution.
 
 - [ ] Every spoken word appears in a subtitle cue
 - [ ] No cue exceeds the character limit for the target format
-- [ ] Subtitles are in the bottom 20% of frame — never covering the face
+- [ ] On 9:16 vertical video, captions sit inside `x = 135..935` and `y = 175..1380` — never in the bottom `540px` or right `145px` social UI dead zones, and never covering the speaker's face
 - [ ] Text is readable on mobile at native resolution
 - [ ] Timing matches speech — no early or late cues
 - [ ] Cues don't overlap each other

@@ -206,21 +206,38 @@ At 3840x2160: Title Safe = inner **3072x1728px**
 
 ### Text-Over-Video Techniques
 
-1. **Semi-transparent box** — 70-80% black opacity behind text (most reliable)
-2. **Text stroke** — 2-4px dark outline around light text
-3. **Drop shadow** — subtle shadow for depth (less reliable on busy backgrounds)
-4. **Darkened region** — gradient overlay behind text area
+1. **Contoured dark stroke + multi-layer halo shadow** — `4-6px` deep charcoal stroke (`#0E0E12`, `paintOrder: "stroke fill"`) plus multi-layer dark drop/halo shadows (preferred for presenter & property reels; avoids clunky opaque boxes covering footage)
+2. **Semi-transparent box** — 70-80% black opacity behind text (use only when requested for broadcast/news style)
+3. **Text stroke** — 2-4px dark outline around light text
+4. **Darkened region** — subtle gradient vignette behind text area
 5. **Full-screen overlay** — 30-50% dark overlay for text-heavy screens
+
+## 9:16 Social Reel Caption & Kinetic Callout Rules
+
+When authoring vertical (`1080x1920`) presenter, real estate, or social marketing reels:
+
+1. **Strict Horizontal & Vertical Safe Box (`x = 135..935`, `y = 175..1380`)**:
+   - **Bottom `540px` (`y = 1380..1920`) is off-limits**: Creator handle, caption description, audio ticker, and bottom navigation cover this zone across Instagram Reels, TikTok, and YouTube Shorts.
+   - **Left `135px` (`x < 135`) & Right `145px` (`x > 935`) are off-limits**: Narrow phone aspect-ratio cropping clips the outer edges, and the right-hand Like/Comment/Share/Bookmark icon stack occupies `x = 935..1080` in the lower-mid frame.
+   - When pre-rendering 3D/RGBA text plates, programmatically verify every PNG with `PIL.Image.getbbox()` so `left >= 135` and `1080 - right >= 140`.
+2. **The 90/10 Color Restraint Rule**:
+   - Keep **~90%** of on-screen text in crisp white (`#FFFFFF`) and warm ivory (`#F5F2EB`) over deep charcoal (`#0E0E12`) contoured strokes.
+   - Reserve **~10%** single-hue accent color (e.g., Sunset Coral `#FF6E5A`) strictly for focal numbers, key metrics, and active keyword highlights — never rainbow-color every line.
+3. **Progressive Word Pop-In (No Grey Unspoken Pre-Text)**:
+   - In word-synced active caption blocks, **do not display upcoming unspoken words in dimmed/grey text** (`opacity: 0.4–0.5`); over dark strokes, semi-transparent text looks muddy and distracting.
+   - Instead, keep unspoken words at `opacity: 0` inside their flex layout slots (preventing horizontal layout jitter as words appear) and pop each word in (`opacity: 0 -> 1` over 2 frames, spring `scale(0.86 -> 1.14 -> 1.0)`, `translateY(8px -> -6px -> 0)`, active underline `scaleX`) at the exact word onset (`curSec >= word.start`).
+4. **Cap Kinetic Entrance Scale Overshoot (`<= 1.14x`)**:
+   - For `slam`, `pulse`, and `swing` entrances on wide hero plates, cap initial spring scale at `1.12x–1.14x` (rather than `1.35x+`) so the plate never breaches the left/right safe zones during the first 3 frames.
 
 ## Applying to OpenMontage
 
 When generating text for video in the compose/asset stages:
 
 1. **Font selection** — use the recommended video fonts above; prefer Inter or Open Sans for body, Montserrat Bold for titles
-2. **Size check** — never go below 40px at 1080p for any text element
-3. **Safe zones** — all text within 80% title-safe area; for vertical/short-form, use the 900x1400px universal safe zone
-4. **Subtitle styling** — 42px+, max 2 lines, max 42 chars/line, semi-transparent background at 75% opacity
-5. **Animation** — use easeOutCubic for entrances, hold text for at least 1 second per 13 characters after animation
-6. **Contrast** — verify 4.5:1 minimum on a representative graded frame; prefer white-on-dark-background (21:1)
+2. **Size check** — never go below 40px at 1080p for any text element (34-38px acceptable for contoured-stroke multi-word active caption blocks within `x = 135..935`)
+3. **Safe zones** — all text within 80% title-safe area; for 9:16 vertical short-form, enforce `x = 135..935` and `y = 175..1380`
+4. **Subtitle styling** — prefer contoured charcoal stroke + halo shadows (no background pills/boxes) with progressive word pop-in (`opacity: 0` until spoken)
+5. **Animation** — use easeOutCubic or physics springs for entrances, hold text for at least 1 second per 13 characters after animation
+6. **Contrast** — verify 4.5:1 minimum on a representative graded frame; follow the 90/10 color restraint rule
 7. **Platform targeting** — check the platform safe zone table above and adjust text placement accordingly
-8. **Remotion rendering** — all font families must be loaded via `@import` or `fontFamily` in the component; test that fonts render in the Docker/Lambda environment
+8. **Remotion rendering** — all font families must be loaded via `@font-face` (`staticFile("fonts/...")`) or `@remotion/google-fonts`; verify fonts render in headless Chromium
