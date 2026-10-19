@@ -32,12 +32,13 @@ class ElevenLabsTTS(BaseTool):
     tier = ToolTier.VOICE
     capability = "tts"
     provider = "elevenlabs"
-    stability = ToolStability.EXPERIMENTAL
+    stability = ToolStability.PRODUCTION
+    quality_score = 0.95
     execution_mode = ExecutionMode.SYNC
     determinism = Determinism.STOCHASTIC
     runtime = ToolRuntime.API
 
-    dependencies = []
+    dependencies = ["env:ELEVENLABS_API_KEY"]
     install_instructions = (
         "Set the ELEVENLABS_API_KEY environment variable:\n"
         "  export ELEVENLABS_API_KEY=your_key_here\n"
