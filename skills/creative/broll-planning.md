@@ -143,3 +143,36 @@ However, best practice is to track sources in the asset manifest:
 ```
 
 This data is available in the tool's response (`photographer`, `pexels_url` / `page_url`). Include it in the asset manifest for transparency.
+
+## Transforming 2D Stills into 3D Volumetric B-Roll (Architectural & Real Estate)
+
+Converting supplied 2D architectural photographs into cinematic B-roll requires overcoming the "slideshow trap" (flat 2.5D optical flow warping / rubber-sheet morphing).
+
+### Core Principles for True Spatial Depth
+
+1. **Enforce Differential Angular Velocity (Motion Parallax)**
+   - In a planar warp, all pixels stretch at uniform rates. In true 3D cinematography, objects at varying Z-depths move at different angular velocities.
+   - Always frame shots with a distinct **foreground anchor** (e.g. bamboo leaves, gate pier, perimeter wall) that sweeps past the lens significantly faster than the background structure.
+   - Avoid flat orthogonal angles against facades; frame at a **30° to 45° rake angle** to reveal depth along leading architectural lines.
+
+2. **Source Plate Hygiene (Purge Typography & Pins)**
+   - Promotional brochures often contain location pins, badges, or text callouts (e.g., "MRT Station", "School") across the sky or landscape.
+   - Video generation models treat 2D typography as rigid physical billboards floating in the scene, destroying spatial immersion.
+   - **Mandatory Step**: Inpaint/remove all graphic text badges and watermarks prior to feeding the plate to image-to-video models.
+
+3. **Aspect Ratio Pre-Conditioning (Vertical 9:16 vs Landscape)**
+   - Models like MiniMax H3 inherit the aspect ratio directly from the input image canvas.
+   - Supplying a landscape (16:9 / 3:2) still will produce a landscape video even if a vertical format is requested.
+   - Always crop, re-frame, and scale the plate to target vertical dimensions (e.g., `1080x1920` or `1440x2560`) before initiating API generation.
+
+4. **Model Architecture Strengths**
+   - **Runway Gen-4 Turbo**: Optimized for high consistency and low distortion, but defaults to conservative micro-drift on stills; may fail with safety/quality rejection codes (`INTERNAL.BAD_OUTPUT.CODE01`) on aggressive camera motion prompts.
+   - **MiniMax H3 (Hailuo 3.0 via fal.ai)**: Exceptional physical camera travel (4–6 meter dollies, vertical crane pedestals), dynamic fluid surface simulation (water ripples and sunlight caustics in pools), and native 2K vertical canvas (`1440x2560`).
+
+5. **Editorial Luxury Typography Integration**
+   - High-end architectural B-roll demands understated editorial typography:
+     - Tracked small caps category tag in champagne/gold (`#E1CDA0`) with a fine geometric accent line.
+     - Refined luxury serif headline (`Georgia Bold`, `#FFFFFF`) for spatial identity.
+     - Muted ivory sub-narrative (`#DCDCDC`) detailing craftsmanship or materiality.
+     - Lower-third placement (`y: 1530` on a 1920h canvas) over a smooth 25% gradient falloff to maintain legibility over shifting architectural highlights while respecting Reels/TikTok UI safe zones.
+

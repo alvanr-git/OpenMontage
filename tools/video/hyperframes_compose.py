@@ -295,10 +295,10 @@ class HyperFramesCompose(BaseTool):
                 [npm, "view", cls._NPM_PACKAGE, "version"],
                 capture_output=True,
                 text=True,
-                timeout=5,
+                timeout=15,
             )
         except subprocess.TimeoutExpired:
-            cls._npm_resolve_cache = {"error": "timeout (5s) — offline or slow registry"}
+            cls._npm_resolve_cache = {"error": "timeout (15s) — offline or slow registry"}
             return cls._npm_resolve_cache
         except (OSError, subprocess.SubprocessError) as e:
             cls._npm_resolve_cache = {"error": f"npm view failed: {type(e).__name__}"}
