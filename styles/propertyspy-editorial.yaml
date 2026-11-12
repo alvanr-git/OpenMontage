@@ -1,0 +1,135 @@
+identity:
+  name: "Property Spy Editorial"
+  category: minimalist
+  mood: authoritative, data-driven, refined
+  pace: moderate
+  best_for: "New launch project spotlights, Singapore landed market reports, URA caveat analysis, listing tours, and real estate policy explainers"
+
+taste_profile:
+  design_read: "Singapore premier property intelligence platform: DM Serif Display editorial headlines paired with crisp data cards on warm cream."
+  visual_variance: 5
+  motion_intensity: 4
+  information_density: 6
+  palette_discipline: "Warm cream canvas (#FAF8F4), deep navy (#0B1F3A) headlines, signature gold (#B8963E) and cobalt (#185FA5) data accents."
+  layout_variation: "Alternate district map/cadastral views, unit-mix comparison tables, and full-bleed architectural project renders."
+  reference_strategy: "Ground scenes in verified URA caveat data, D01-D28 project renders, floorplans, and street-level landed analytics."
+  anti_patterns:
+    - "hype-driven salesy popups or loud flashing stickers"
+    - "unverified price claims without caveat or developer ledger backing"
+    - "low-contrast text over busy property photography"
+  quality_gates:
+    - "All pricing, psf, and yield figures must be clearly legible and anchored to district/tenure context."
+    - "Balance architectural renders with clean cream data cards so frames never feel crowded."
+
+visual_language:
+  color_palette:
+    primary: ["#0B1F3A", "#1A3352"]
+    accent: ["#B8963E", "#185FA5"]
+    background: "#FAF8F4"
+    text: "#0B1F3A"
+    muted: "#4B5563"
+  composition: editorial publication grid with warm cream cards, subtle #E5DDD0 borders, and high-contrast district badges
+  texture: warm editorial cream field (#FAF8F4) with crisp white (#FFFFFF) elevation cards and subtle #E5DDD0 dividers
+
+typography:
+  headings:
+    font: "DM Serif Display"
+    weight: 700
+    tracking: "-0.01em"
+  body:
+    font: "DM Sans"
+    weight: 400
+    line_height: 1.55
+  code:
+    font: "JetBrains Mono"
+    weight: 400
+  stat_card:
+    font: "DM Sans"
+    weight: 800
+    size_multiplier: 3.1
+  scale_system: "major_third"
+  weight_matrix:
+    title: 800
+    heading: 700
+    body: 400
+    caption: 500
+
+motion:
+  transitions: [fade, slide-left, dissolve]
+  animation_style: "smooth cubic-bezier editorial reveal, crisp stat counter entrance"
+  pacing_rules:
+    min_scene_hold_seconds: 2.5
+    max_scene_hold_seconds: 10
+    text_card_hold_seconds: 3.5
+    stat_card_hold_seconds: 3.25
+    transition_duration_seconds: 0.4
+  entrance: "fade-up 14px with smooth deceleration"
+  exit: "soft fade"
+
+audio:
+  voice_style: "articulate Singapore property analyst, objective, data-grounded, trustworthy"
+  music_mood: "modern editorial pulse, refined architectural lounge"
+  music_volume: 0.08
+  sfx_style: "clean UI card snaps, subtle data reveal ticks"
+  ducking_threshold_db: -4
+
+asset_generation:
+  image_prompt_prefix: "Singapore luxury real estate editorial photography, modern tropical architecture, warm daylight, architectural digest quality, clean composition, "
+  image_negative_prompt: "cluttered, watermark, low resolution, neon cyberpunk, distorted buildings, cartoon"
+  diagram_style: "editorial real estate chart and floorplan callout, deep navy #0B1F3A ink, warm cream #FAF8F4 background, gold #B8963E and blue #185FA5 highlights"
+  consistency_anchors:
+    - "Warm cream #FAF8F4 canvas with deep navy #0B1F3A headings"
+    - "DM Serif Display headings paired with DM Sans body and metrics"
+    - "Consistent district and tenure badges (e.g., D10, D15, Freehold, 99-yr)"
+    - "Clean #E5DDD0 card borders with generous padding"
+
+overlays:
+  stat_card:
+    bg: "#FFFFFF"
+    border: "#E5DDD0"
+    text: "#0B1F3A"
+    accent: "#B8963E"
+    radius: 10
+    shadow: "0 4px 16px rgba(11,31,58,0.08)"
+  key_term:
+    bg: "#E6F1FB"
+    text: "#0B1F3A"
+    accent: "#185FA5"
+    radius: 6
+  code_block:
+    bg: "#0B1F3A"
+    text: "#FAF8F4"
+    highlight: "#D4AF62"
+  section_title:
+    bg: "#FFFFFF"
+    text: "#0B1F3A"
+    accent: "#B8963E"
+  stat_reveal:
+    bg: "#FFFFFF"
+    text: "#0B1F3A"
+    accent: "#185FA5"
+  hero_title:
+    bg: "#0B1F3A"
+    text: "#FAF8F4"
+    accent: "#B8963E"
+  provider_chip:
+    bg: "#FFFFFF"
+    text: "#0B1F3A"
+    border: "#E5DDD0"
+
+quality_rules:
+  - "Minimum contrast ratio 4.5:1 for all text"
+  - "Always display district and tenure context alongside property pricing"
+  - "Keep one primary data claim or floorplan insight per frame"
+  - "Avoid decorative gradients that obscure property imagery"
+
+chart_palette:
+  - "#0B1F3A"
+  - "#185FA5"
+  - "#B8963E"
+  - "#4B5563"
+
+color_rules:
+  harmony_type: "split-complementary"
+  contrast_validation: true
+  colorblind_safe: true

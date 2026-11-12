@@ -141,6 +141,7 @@ Pipeline type skills provide production guidance for specific video formats, ind
 | 3D World Generation | `creative/3d-world-generation.md` | Continuous Three.js terrain worlds with semantic regions, explicit blockout/production tiers, licensed GLTF/PBR assets, diagnostics, and deterministic camera paths |
 | Character Animation Pipeline | `pipelines/character-animation/` | Rigged local cartoon characters, pose libraries, action timelines, SVG/Canvas/Remotion/HyperFrames rendering |
 | Cinematic | `creative/cinematic.md` | Letterbox, film pacing, layered audio, color grading |
+| Real Estate Viral Frameworks | `creative/real-estate-viral-frameworks.md` | Optional creative menu & unified PropSpyandCEO knowledge/media pool for `@propertyspy` and `alvanassets` videos |
 
 ## Pipeline Stage Director Skills
 
@@ -319,6 +320,8 @@ Style playbooks (`styles/*.yaml`) define visual language, typography, motion, au
 | `flat-motion-graphics` | motion-graphics | energetic, bold | Social media, TikTok, startups |
 | `minimalist-diagram` | whiteboard | focused, technical | Technical deep-dives, architecture |
 | `anime-ghibli` | custom | warm, whimsical, contemplative | Narrative animations, nature-themed stories, emotional storytelling, fantasy visuals |
+| `assets-with-alvan` | minimalist | quiet-luxury, architectural, analytical | Optional theme for Assets with Alvan (`alvanassets`) & architectural/yield explainers |
+| `propertyspy-editorial` | motion-graphics | authoritative, data-driven, advisory | Optional theme for PropertySpy (`@propertyspy`) market briefings, launches & listings |
 
 Load via `styles/playbook_loader.py`: `load_playbook("clean-professional")`. `list_playbooks()` is the authoritative list.
 
