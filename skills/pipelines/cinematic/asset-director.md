@@ -11,10 +11,10 @@ Before authoring title cards, name plates, or SVG overlays, read **`skills/meta/
 | Cinematic need | Recommended approach |
 |---|---|
 | Hero title with subtle reveal | Remotion `HeroTitle` component (existing) |
-| Logo build / cinematic sting on SVG | GSAP DrawSVG + MotionPath — read `.agents/skills/gsap-plugins/SKILL.md` |
-| Curved camera move across a wide still or overlay | GSAP MotionPath — read `.agents/skills/gsap-plugins/SKILL.md` |
-| Per-character title reveal (prestige / trailer style) | GSAP SplitText — read `.agents/skills/gsap-plugins/SKILL.md` |
-| Cinematic easings (Unreal-style, stuttering, weighted) | GSAP CustomEase / EasePack — read `.agents/skills/gsap-plugins/SKILL.md` |
+| Logo build / cinematic sting on SVG | GSAP DrawSVG + MotionPath — read `skills/reference/gsap-plugins/SKILL.md` |
+| Curved camera move across a wide still or overlay | GSAP MotionPath — read `skills/reference/gsap-plugins/SKILL.md` |
+| Per-character title reveal (prestige / trailer style) | GSAP SplitText — read `skills/reference/gsap-plugins/SKILL.md` |
+| Cinematic easings (Unreal-style, stuttering, weighted) | GSAP CustomEase / EasePack — read `skills/reference/gsap-plugins/SKILL.md` |
 | Name plate lower-third with elastic settle | Remotion `spring()` is usually enough; GSAP CustomEase if you need stutter |
 | Film grain / particle overlay | Remotion `ParticleOverlay` (existing) |
 | Color grade / LUT | `tools/enhancement/color_grade.py` (not an animation concern) |

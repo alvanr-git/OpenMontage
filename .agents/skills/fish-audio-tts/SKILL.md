@@ -1,6 +1,6 @@
 ---
 name: fish-audio-tts
-description: Generate expressive, multilingual narration with fish.audio (S1 / S2-generation models) and reuse cloned voices via reference_id. Use when the user prefers fish.audio/Fish Audio TTS, wants a specific playground voice model, or needs high-emotion voice-clone narration.
+description: "Generate expressive, multilingual narration with fish.audio (S1 / S2-generation models) and reuse cloned voices via."
 ---
 
 # fish.audio TTS

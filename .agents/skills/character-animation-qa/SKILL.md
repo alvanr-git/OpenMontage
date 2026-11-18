@@ -1,6 +1,6 @@
 ---
 name: character-animation-qa
-description: Review local character animation with schema checks, Playwright browser previews, frame sampling, and FFmpeg/ffprobe final output checks.
+description: "Review local character animation with schema checks, Playwright browser previews, frame sampling, and FFmpeg/ffprobe."
 license: MIT
 ---
 

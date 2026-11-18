@@ -64,10 +64,10 @@ when both were available is a CRITICAL reviewer finding.
 | Registry block needed (data-chart, grain-overlay, shader transitions, etc.) | **hyperframes** | `.agents/skills/hyperframes-registry/SKILL.md` |
 | Editable browser-native 3D terrain/world and free-viewpoint fly-through | **hyperframes** | `skills/creative/3d-world-generation.md` + `.agents/skills/threejs-world-generation/SKILL.md` |
 | Reference-grade 3D world film rendered in Blender | **ffmpeg packaging of Blender frames** | `skills/creative/3d-world-generation.md` + `.agents/skills/3d-asset-generation/SKILL.md` |
-| Beat-synced music video (audio drives scene timing) | **hyperframes** | `.agents/skills/music-to-video/SKILL.md` — uses `hyperframes beats` to detect drops, lays out frames on the beat grid |
-| Porting an existing Remotion composition to HyperFrames | **hyperframes** | `.agents/skills/remotion-to-hyperframes/SKILL.md` — migration guidance, ONLY for explicit port requests |
-| BGM / SFX / image / icon resolution (any pipeline, any runtime) | n/a | `.agents/skills/media-use/SKILL.md` — `resolve` verb against project cache + global cache + HeyGen catalog |
-| Short design-led motion graphic (lower-third, stat reveal, logo sting, headline) | **hyperframes** | `.agents/skills/motion-graphics/SKILL.md` |
+| Beat-synced music video (audio drives scene timing) | **hyperframes** | `skills/reference/music-to-video/SKILL.md` — uses `hyperframes beats` to detect drops, lays out frames on the beat grid |
+| Porting an existing Remotion composition to HyperFrames | **hyperframes** | `skills/reference/remotion-to-hyperframes/SKILL.md` — migration guidance, ONLY for explicit port requests |
+| BGM / SFX / image / icon resolution (any pipeline, any runtime) | n/a | `skills/reference/media-use/SKILL.md` — `resolve` verb against project cache + global cache + HeyGen catalog |
+| Short design-led motion graphic (lower-third, stat reveal, logo sting, headline) | **hyperframes** | `skills/reference/motion-graphics/SKILL.md` |
 | Pure concat / trim of source clips, no composition needed | **ffmpeg** | `skills/core/ffmpeg.md` |
 | Selected runtime is unavailable | **escalate** — do not substitute silently | `AGENT_GUIDE.md` → Escalate Blockers |
 
@@ -80,26 +80,26 @@ decision matrix and the list of features that stay Remotion-only in Phase 1.
 |---|---|---|
 | Simple fade / slide / scale / spring | Remotion primitives (no plugin) | `.agents/skills/remotion` |
 | Two-state spring with physics | Remotion `spring()` | `.agents/skills/remotion` |
-| Multi-step sequence with offsets | Remotion `Sequence` + `interpolate()` **or** GSAP timeline | `.agents/skills/remotion` + optionally `.agents/skills/gsap-timeline` |
+| Multi-step sequence with offsets | Remotion `Sequence` + `interpolate()` **or** GSAP timeline | `.agents/skills/remotion` + optionally `skills/reference/gsap-timeline` |
 | Per-word text reveal synced to narration | Remotion `interpolate` driven by word-level transcript (existing `CaptionOverlay` pattern) | `.agents/skills/remotion` |
-| Per-character kinetic typography (SplitText style) | GSAP SplitText inside Remotion | `.agents/skills/gsap-plugins` (SplitText), `.agents/skills/gsap-react` |
-| SVG shape morph between two paths | GSAP MorphSVG inside Remotion | `.agents/skills/gsap-plugins` (MorphSVG) |
-| Curved camera / object motion along a custom path | GSAP MotionPath inside Remotion | `.agents/skills/gsap-plugins` (MotionPath) |
-| SVG line drawing / stroke reveal | GSAP DrawSVG | `.agents/skills/gsap-plugins` (DrawSVG) |
-| Bespoke bezier / elastic / stutter easing | GSAP CustomEase / EasePack / CustomWiggle | `.agents/skills/gsap-plugins` |
-| Layout-to-layout transition (FLIP) | GSAP Flip inside Remotion | `.agents/skills/gsap-plugins` (Flip) |
-| Disney's 12 animation principles for UI motion | framer-motion + Lottie | `.agents/skills/framer-motion`, `.agents/skills/lottie-bodymovin` |
-| Lottie export from After Effects / Figma | Lottie | `.agents/skills/lottie-bodymovin` |
-| Synthetic terminal / CLI demo | Remotion TerminalScene | `.agents/skills/synthetic-screen-recording` |
+| Per-character kinetic typography (SplitText style) | GSAP SplitText inside Remotion | `skills/reference/gsap-plugins` (SplitText), `skills/reference/gsap-react` |
+| SVG shape morph between two paths | GSAP MorphSVG inside Remotion | `skills/reference/gsap-plugins` (MorphSVG) |
+| Curved camera / object motion along a custom path | GSAP MotionPath inside Remotion | `skills/reference/gsap-plugins` (MotionPath) |
+| SVG line drawing / stroke reveal | GSAP DrawSVG | `skills/reference/gsap-plugins` (DrawSVG) |
+| Bespoke bezier / elastic / stutter easing | GSAP CustomEase / EasePack / CustomWiggle | `skills/reference/gsap-plugins` |
+| Layout-to-layout transition (FLIP) | GSAP Flip inside Remotion | `skills/reference/gsap-plugins` (Flip) |
+| Disney's 12 animation principles for UI motion | framer-motion + Lottie | `skills/reference/framer-motion`, `skills/reference/lottie-bodymovin` |
+| Lottie export from After Effects / Figma | Lottie | `skills/reference/lottie-bodymovin` |
+| Synthetic terminal / CLI demo | Remotion TerminalScene | `skills/reference/synthetic-screen-recording` |
 | Mathematical / scientific visualization | Manim | `.agents/skills/manim-composer`, `.agents/skills/manimce-best-practices` |
 | D3 data-driven visualization | D3 | `.agents/skills/d3-viz` |
 | Data chart (bar/line/pie/KPI) | Remotion built-in chart components | `remotion-composer/SCENE_TYPES.md` |
-| HyperFrames composition — animation knowledge (rules, blueprints, transitions, runtime adapters) | HyperFrames + GSAP default | `.agents/skills/hyperframes-animation` (consolidated motion skill) + `.agents/skills/gsap-core`, `.agents/skills/gsap-timeline` |
-| HyperFrames composition structure (data-* timing, tracks, sub-compositions) | HyperFrames | `.agents/skills/hyperframes-core` |
+| HyperFrames composition — animation knowledge (rules, blueprints, transitions, runtime adapters) | HyperFrames + GSAP default | `skills/reference/hyperframes-animation` (consolidated motion skill) + `skills/reference/gsap-core`, `skills/reference/gsap-timeline` |
+| HyperFrames composition structure (data-* timing, tracks, sub-compositions) | HyperFrames | `skills/reference/hyperframes-core` |
 | Explicit Three.js world (terrain, regions, landmarks, camera path) | HyperFrames + `threejs_world` | `.agents/skills/threejs-world-generation` |
 | Detailed Blender world film (generated/catalog meshes, PBR, camera path) | Blender + FFmpeg packaging | `.agents/skills/3d-asset-generation` |
-| HyperFrames creative direction (palette, type, narration, beat planning) | HyperFrames | `.agents/skills/hyperframes-creative` |
-| HyperFrames audio/media (TTS, BGM, SFX, transcription, captions, bg-removal) | HyperFrames | `.agents/skills/hyperframes-media` |
+| HyperFrames creative direction (palette, type, narration, beat planning) | HyperFrames | `skills/reference/hyperframes-creative` |
+| HyperFrames audio/media (TTS, BGM, SFX, transcription, captions, bg-removal) | HyperFrames | `skills/reference/hyperframes-media` |
 | HyperFrames composition CLI work (lint/validate/inspect/snapshot/benchmark/render/lambda) | HyperFrames CLI 0.7+ | `.agents/skills/hyperframes-cli` |
 | HyperFrames registry block install (`hyperframes add ...`) | HyperFrames registry | `.agents/skills/hyperframes-registry` |
 
@@ -136,7 +136,7 @@ const t = frame / durationInFrames;
 const easedValue = easeFn(t);
 ```
 
-For the full breakdown, read `.agents/skills/gsap-react/SKILL.md`.
+For the full breakdown, read `skills/reference/gsap-react/SKILL.md`.
 
 ## Check against the pipeline's stage director
 

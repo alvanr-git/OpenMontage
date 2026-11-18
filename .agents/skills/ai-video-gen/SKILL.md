@@ -1,7 +1,6 @@
 ---
 name: ai-video-gen
-description: |
-  Generate AI videos from text prompts using multiple provider gateways. Use when: (1) Generating videos from text descriptions, (2) Creating AI-generated video clips for content production, (3) Image-to-video generation with a reference image, (4) Choosing between video generation providers (VEO, Kling, Sora, Runway, Seedance, MiniMax, Gemini Omni). Supports gateways: HeyGen API, fal.ai API, Kling official direct API, and the Gemini API (Gemini Omni Flash).
+description: "Generate AI videos from text prompts using multiple provider gateways."
 allowed-tools: mcp__heygen__*
 metadata:
   openclaw:

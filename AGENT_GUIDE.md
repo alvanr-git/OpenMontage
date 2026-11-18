@@ -419,7 +419,7 @@ For these requests:
 - Explainer videos with `flat-motion-graphics` playbook -> Remotion animated scenes, not Ken Burns
 - Data-driven videos -> Remotion stat cards and charts, not static image screenshots
 - Any pipeline using still images -> Remotion spring animations, not FFmpeg pan-and-zoom
-- **Screen demos of a CLI/terminal/install flow -> `TerminalScene` (synthetic screen recording), not OS-level capture.** See `.agents/skills/synthetic-screen-recording/SKILL.md`. Faster, deterministic, privacy-safe. Use real capture (`screen_recorder`, `cap_recorder`, `playwright-recording`) only when the demo is a real app UI or requires unpredictable live behavior.
+- **Screen demos of a CLI/terminal/install flow -> `TerminalScene` (synthetic screen recording), not OS-level capture.** See `skills/reference/synthetic-screen-recording/SKILL.md`. Faster, deterministic, privacy-safe. Use real capture (`screen_recorder`, `cap_recorder`, `playwright-recording`) only when the demo is a real app UI or requires unpredictable live behavior.
 
 ### Remotion scene types available in `remotion-composer/`
 

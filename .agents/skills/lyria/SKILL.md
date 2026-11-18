@@ -1,6 +1,6 @@
 ---
 name: lyria
-description: Generate and validate music with Google Lyria through the Gemini Interactions API. Use before calling OpenMontage `google_music`, designing Lyria 3.5 or Clip prompts, using image-to-music or custom lyrics, choosing between single-turn Lyria and Lyria RealTime, diagnosing Google music-generation failures, or preparing exact-duration music for a video.
+description: "Generate and validate music with Google Lyria through the Gemini Interactions API."
 ---
 
 # Google Lyria

@@ -1,6 +1,6 @@
 ---
 name: kling-official
-description: Official Kling direct API guidance for OpenMontage providers. Use before calling `kling_official_video`, `kling_official_image`, `kling_tts`, `kling_avatar`, or `kling_lip_sync`.
+description: "Official Kling direct API guidance for OpenMontage providers."
 metadata:
   openclaw:
     requires:

@@ -1,6 +1,6 @@
 ---
 name: doubao-tts
-description: Generate Mandarin and multilingual narration with Volcengine Doubao Speech 2.0. Use when creating Chinese voiceovers, when the user prefers Doubao/Volcengine/火山引擎/豆包 TTS, or when narration needs character-level timestamp metadata for subtitles.
+description: "Generate Mandarin and multilingual narration with Volcengine Doubao Speech 2.0."
 ---
 
 # Doubao TTS

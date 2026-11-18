@@ -1,6 +1,6 @@
 ---
 name: flux-best-practices
-description: Comprehensive guide for BFL FLUX image generation models. Covers prompting, T2I, I2I, structured JSON, hex colors, typography, multi-reference editing, and model-specific best practices for FLUX.2 and FLUX.1 families.
+description: "Comprehensive guide for BFL FLUX image generation models."
 metadata:
   author: Black Forest Labs
   version: "1.0.0"

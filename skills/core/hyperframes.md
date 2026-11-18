@@ -10,17 +10,17 @@ timeline rules, CLI flags, registry blocks, website-to-video), read the Layer 3
 skills:
 
 - `.agents/skills/hyperframes/` — router into the focused skills below (HF 0.7+ split the monolithic skill)
-- `.agents/skills/hyperframes-core/` — composition contract: `data-*` timing, tracks, sub-compositions, deterministic-render rules
-- `.agents/skills/hyperframes-creative/` — non-animation creative direction: palette, type, narration, beat planning
-- `.agents/skills/hyperframes-media/` — TTS/BGM/SFX/transcription/captions/background-removal
-- `.agents/skills/hyperframes-animation/` — all motion knowledge (rules, blueprints, transitions, runtime adapters)
+- `skills/reference/hyperframes-core/` — composition contract: `data-*` timing, tracks, sub-compositions, deterministic-render rules
+- `skills/reference/hyperframes-creative/` — non-animation creative direction: palette, type, narration, beat planning
+- `skills/reference/hyperframes-media/` — TTS/BGM/SFX/transcription/captions/background-removal
+- `skills/reference/hyperframes-animation/` — all motion knowledge (rules, blueprints, transitions, runtime adapters)
 - `.agents/skills/hyperframes-cli/` — init, add, lint, validate, inspect, snapshot, preview, render, benchmark, lambda, doctor (0.7+)
 - `.agents/skills/hyperframes-registry/` — `hyperframes add` + block wiring
 - `.agents/skills/website-to-video/` — capture-to-video workflow (renamed from website-to-video in 0.7)
-- `.agents/skills/music-to-video/` — beat-synced music-driven video using `hyperframes beats`
-- `.agents/skills/motion-graphics/` — short design-led motion graphic patterns
-- `.agents/skills/media-use/` — `resolve` verb for BGM/SFX/image/icon (any pipeline, any runtime)
-- `.agents/skills/remotion-to-hyperframes/` — migration ONLY when user explicitly asks to port a Remotion source
+- `skills/reference/music-to-video/` — beat-synced music-driven video using `hyperframes beats`
+- `skills/reference/motion-graphics/` — short design-led motion graphic patterns
+- `skills/reference/media-use/` — `resolve` verb for BGM/SFX/image/icon (any pipeline, any runtime)
+- `skills/reference/remotion-to-hyperframes/` — migration ONLY when user explicitly asks to port a Remotion source
 
 This file teaches the bridge between the two.
 

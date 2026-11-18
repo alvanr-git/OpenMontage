@@ -1,6 +1,6 @@
 ---
 name: beautiful-mermaid
-description: Render Mermaid diagrams as SVG and PNG using the Beautiful Mermaid library. Use when the user asks to render a Mermaid diagram.
+description: "Render Mermaid diagrams as SVG and PNG using the Beautiful Mermaid library."
 ---
 
 # Beautiful Mermaid Diagram Rendering

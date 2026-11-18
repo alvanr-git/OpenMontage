@@ -329,9 +329,8 @@ Load via `styles/playbook_loader.py`: `load_playbook("clean-professional")`. `li
 
 ## Installed Agent Skills (Layer 3)
 
-All agent skills live in `.agents/skills/` and are managed via `npx skills add`.
-`ls .agents/skills` is the authoritative list (92 skill directories as of 2026-10-25); the table below groups them by what they are for.
-Claude Code accesses them via symlinks in `.claude/skills/`.
+All tool-referenced Layer 3 skills live in `.agents/skills/` (57 skill directories, matching `tool.agent_skills[]` pointers) to stay within agent skill-discovery context budgets.
+Additional on-demand reference docs (not auto-loaded into agent system prompts) live in `skills/reference/`.
 
 | Category | Installed Skills | Source |
 |----------|-----------------|--------|
